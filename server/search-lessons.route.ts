@@ -11,11 +11,11 @@ export function searchLessons(req: Request, res: Response) {
 
     const queryParams = req.query;
 
-    const courseId = queryParams.courseId,
-          filter = queryParams.filter || '',
-          sortOrder = queryParams.sortOrder,
-          pageNumber = parseInt(queryParams.pageNumber) || 0,
-          pageSize = parseInt(queryParams.pageSize);
+    const courseId = queryParams.courseId as any,
+          filter = queryParams.filter as string || '',
+          sortOrder = queryParams.sortOrder as string,
+          pageNumber = parseInt(queryParams.pageNumber as string) || 0,
+          pageSize = parseInt(queryParams.pageSize as string);
 
     let lessons = Object.values(LESSONS).filter(lesson => lesson.courseId == courseId).sort((l1, l2) => l1.id - l2.id);
 
